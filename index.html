@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="timer.css">
+</head>
+<title></title>
+
+<body>
+
+<header>
+
+</header>
+
+<main>
+  <div class="timer-container">
+    <div class="number-row">
+        <div class="digital-number number-left number-up" id="number-minute-left-up"></div>
+        <div class="digital-blank-separater"></div>
+        <div class="digital-number number-right number-up" id="number-minute-right-up"></div>
+        <div class="digital-separater"></div>
+        <div class="digital-number number-left number-up" id="number-second-left-up"></div>
+        <div class="digital-blank-separater"></div>
+        <div class="digital-number number-right number-up" id="number-second-right-up"></div>    
+    </div>
+    <div class="number-row">
+        <div class="digital-number number-left number-down" id="number-minute-left-down"></div>
+        <div class="digital-blank-separater"></div>
+        <div class="digital-number number-right number-down" id="number-minute-right-down"></div>
+        <div class="digital-separater"></div>  
+        <div class="digital-number number-left number-down" id="number-second-left-down"></div>
+        <div class="digital-blank-separater"></div>
+        <div class="digital-number number-right number-down" id="number-second-right-down"></div>    
+    </div>  
+  </div>
+
+  <div class="timer-controller">
+    <div class="timer-controller-row">
+        <button class="timer-button" type="button" id="timer-start">スタート</button>
+        <button class="timer-button" type="button" id="timer-stop">ストップ</button>
+        <button class="timer-button" type="button" id="timer-reset">リセット</button>    
+    </div>
+    <div class="timer-controller-row">
+        <button class="timer-set-button" type="button" id="button-10min">10分</button>    
+        <button class="timer-set-button" type="button" id="button-1min">1分</button>    
+        <button class="timer-set-button" type="button" id="button-10sec">10秒</button>   
+        <button class="timer-set-button" type="button" id="button-1sec">1秒</button>  
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+
+<script type="text/javascript" src="timer.js"></script>
+
+</html>

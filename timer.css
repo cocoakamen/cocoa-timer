@@ -1,0 +1,129 @@
+:root {
+ --number-line-width: 30px;
+}
+
+main {
+  display:flex;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+main .timer-container{
+  width:800px;
+  padding:50px;
+}
+
+main .timer-controller{
+  width:800px;
+  margin:10px;
+}
+
+main .digital-number{
+  border: solid;
+  width:200px;
+  height:170px;
+  border-width: var(--number-line-width);
+  box-sizing: border-box;
+}
+
+main .number-up {
+  border-bottom-width: calc( var(--number-line-width)/2);
+}
+
+main .number-down {
+  border-top-width: calc( var(--number-line-width)/2);
+}
+
+main .digital-blank-separater{
+  width: 30px;
+}
+
+main .digital-separater{
+  border:solid;
+  width: 30px;
+  height: 30px;
+  margin:20px;
+  background-color: black;
+  border-radius: 30px;
+}
+
+main .number-row {
+  display: flex;
+  align-items: center;
+}
+
+main .timer-controller-row{
+  margin:20px 20px;
+}
+main .timer-button {
+  /* 文字サイズを1.4emに指定 */
+  font-size: 1.4em;
+
+  /* 文字の太さをboldに指定 */
+  font-weight: bold;
+
+  /* 縦方向に10px、
+   * 横方向に30pxの余白を指定 */
+  padding: 10px 30px;
+
+  /* 背景色を濃い青色に指定 */
+  background-color: #248;
+
+  /* 文字色を白色に指定 */
+  color: #fff;
+
+  /* ボーダーをなくす */
+  border-style: none;
+
+  /* ボタンの影の指定
+   * 影の横幅を2px
+   * 縦長を2px
+   * ぼかしを3px
+   * 広がりを1px
+   * 色を#666（グレー）に指定 */
+  box-shadow: 2px 2px 3px 1px #666;
+  -moz-box-shadow: 2px 2px 3px 1px #666;
+  -webkit-box-shadow: 2px 2px 3px 1px #666;
+}
+
+main .timer-button:hover {
+  /* 背景色を明るい青色に指定 */
+  background-color: #24d;
+
+  /* 文字色を白色に指定 */
+  color: #fff;
+}
+
+main .timer-set-button {
+  /* 文字サイズを1.4emに指定 */
+  font-size: 1.2em;
+
+  font-weight: bold;
+ padding: 5px 20px;
+
+  /* 背景色を濃い青色に指定 */
+  background-color: #006699;
+
+  /* 文字色を白色に指定 */
+  color: #fff;
+
+  /* ボーダーをなくす */
+  border-style: none;
+
+  /* ボタンの影の指定
+   * 影の横幅を2px
+   * 縦長を2px
+   * ぼかしを3px
+   * 広がりを1px
+   * 色を#666（グレー）に指定 */
+  box-shadow: 2px 2px 3px 1px #666;
+  -moz-box-shadow: 2px 2px 3px 1px #666;
+  -webkit-box-shadow: 2px 2px 3px 1px #666;
+}
+
+main .timer-set-button:hover {
+  /* 背景色を明るい青色に指定 */
+  background-color: #0099CC;
+
+  /* 文字色を白色に指定 */
+  color: #fff;
+}
