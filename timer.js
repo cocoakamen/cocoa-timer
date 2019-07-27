@@ -1,68 +1,72 @@
 function CocoaTimer() {
-  this.NUMBER_COLOR = 'black';
+  this.numberColor = 'black';
   this.GRAY_OUT_COLOR = '#EFEFEF';
   this.remainingTime = 0;
   this.timer = {};
 };
 
 CocoaTimer.prototype.drawNumber = function(upElement, downElement, num) {
+  // :
+  document.getElementById('separater-up').style.backgroundColor = this.numberColor;
+  document.getElementById('separater-down').style.backgroundColor = this.numberColor;
+  // 数字
   switch(num) {
     case 0:
-      upElement.style.borderColor = this.NUMBER_COLOR;
+      upElement.style.borderColor = this.numberColor;
       upElement.style.borderBottomColor = this.GRAY_OUT_COLOR;
-      downElement.style.borderColor = this.NUMBER_COLOR;
+      downElement.style.borderColor = this.numberColor;
       downElement.style.borderTopColor = this.GRAY_OUT_COLOR;
       break;
     case 1:
       upElement.style.borderColor = this.GRAY_OUT_COLOR;
-      upElement.style.borderRightColor = this.NUMBER_COLOR;
+      upElement.style.borderRightColor = this.numberColor;
       downElement.style.borderColor = this.GRAY_OUT_COLOR;
-      downElement.style.borderRightColor = this.NUMBER_COLOR;
+      downElement.style.borderRightColor = this.numberColor;
       break;
     case 2:
-      upElement.style.borderColor = this.NUMBER_COLOR;
+      upElement.style.borderColor = this.numberColor;
       upElement.style.borderLeftColor = this.GRAY_OUT_COLOR;
-      downElement.style.borderColor = this.NUMBER_COLOR;
+      downElement.style.borderColor = this.numberColor;
       downElement.style.borderRightColor = this.GRAY_OUT_COLOR;
       break;
     case 3:
-      upElement.style.borderColor = this.NUMBER_COLOR;
+      upElement.style.borderColor = this.numberColor;
       upElement.style.borderLeftColor = this.GRAY_OUT_COLOR;
-      downElement.style.borderColor = this.NUMBER_COLOR;
+      downElement.style.borderColor = this.numberColor;
       downElement.style.borderLeftColor = this.GRAY_OUT_COLOR;
       break;
     case 4:
-      upElement.style.borderColor = this.NUMBER_COLOR;
+      upElement.style.borderColor = this.numberColor;
       upElement.style.borderTopColor = this.GRAY_OUT_COLOR;
-      downElement.style.borderColor = this.NUMBER_COLOR;
+      downElement.style.borderColor = this.numberColor;
       downElement.style.borderLeftColor = this.GRAY_OUT_COLOR;
       downElement.style.borderBottomColor = this.GRAY_OUT_COLOR;
       break;
     case 5:
-      upElement.style.borderColor = this.NUMBER_COLOR;
+      upElement.style.borderColor = this.numberColor;
       upElement.style.borderRightColor = this.GRAY_OUT_COLOR;
-      downElement.style.borderColor = this.NUMBER_COLOR;
+      downElement.style.borderColor = this.numberColor;
       downElement.style.borderLeftColor = this.GRAY_OUT_COLOR;
       break;
     case 6:
-      upElement.style.borderColor = this.NUMBER_COLOR;
+      upElement.style.borderColor = this.numberColor;
       upElement.style.borderRightColor = this.GRAY_OUT_COLOR;
-      downElement.style.borderColor = this.NUMBER_COLOR;
+      downElement.style.borderColor = this.numberColor;
       break;
     case 7:
       upElement.style.borderColor = this.GRAY_OUT_COLOR;
-      upElement.style.borderRightColor = this.NUMBER_COLOR;
-      upElement.style.borderTopColor = this.NUMBER_COLOR;
+      upElement.style.borderRightColor = this.numberColor;
+      upElement.style.borderTopColor = this.numberColor;
       downElement.style.borderColor = this.GRAY_OUT_COLOR;
-      downElement.style.borderRightColor = this.NUMBER_COLOR;
+      downElement.style.borderRightColor = this.numberColor;
       break;
     case 8:
-      upElement.style.borderColor = this.NUMBER_COLOR;
-      downElement.style.borderColor = this.NUMBER_COLOR;
+      upElement.style.borderColor = this.numberColor;
+      downElement.style.borderColor = this.numberColor;
       break;
     case 9:
-      upElement.style.borderColor = this.NUMBER_COLOR;
-      downElement.style.borderColor = this.NUMBER_COLOR;
+      upElement.style.borderColor = this.numberColor;
+      downElement.style.borderColor = this.numberColor;
       downElement.style.borderLeftColor = this.GRAY_OUT_COLOR;
       downElement.style.borderBottomColor = this.GRAY_OUT_COLOR;
       break;
@@ -100,9 +104,9 @@ CocoaTimer.prototype.drawTime = function(timeArray) {
 };
 
 CocoaTimer.prototype.resetTime = function(){
-  this.drawTime([0,0,0,0]);
   this.remainingTime = 0;
-  clearInterval(this.timer );
+  cocoaTimer.numberColor = 'black';
+  this.drawTime([0,0,0,0]);
 }
 
 /*
@@ -139,13 +143,20 @@ CocoaTimer.prototype.start = function(milliSeconds) {
   const recalc = function(){
     
     cocoaTimer.addRemainingTime(-1 * INTERVAL_TIME);
-    console.log('cocoaTimer.remainingTime' + cocoaTimer.remainingTime );
+    console.log('cocoaTimer.remainingTime: ' + cocoaTimer.remainingTime );
 
     if( cocoaTimer.remainingTime < 0) {
-      cocoaTimer.resetTime();
+      // 点滅
+      if( cocoaTimer.remainingTime % 2000 == -1000){
+        cocoaTimer.numberColor = 'crimson';
+      } else {
+        cocoaTimer.numberColor = 'black';
+      }
+      cocoaTimer.drawTime(cocoaTimer.remainingTimeArray(0));
     } else {
       cocoaTimer.drawTime(cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));
     }
+    
     console.log( cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));  
   }
 
@@ -170,6 +181,7 @@ window.onload = function(){
 
   // リセットボタン
   document.getElementById('timer-reset').addEventListener("click", function(){
+    clearInterval(cocoaTimer.timer );
     cocoaTimer.resetTime();
   });
 
