@@ -2,7 +2,7 @@ function CocoaTimer() {
   this.numberColor = 'black';
   this.GRAY_OUT_COLOR = '#EFEFEF';
   this.remainingTime = 0;
-  this.timer = {};
+  this.timer = 0;
 };
 
 CocoaTimer.prototype.drawNumber = function(upElement, downElement, num) {
@@ -105,6 +105,7 @@ CocoaTimer.prototype.drawTime = function(timeArray) {
 
 CocoaTimer.prototype.resetTime = function(){
   this.remainingTime = 0;
+  this.timer = 0;
   cocoaTimer.numberColor = 'black';
   this.drawTime([0,0,0,0]);
 }
@@ -159,8 +160,12 @@ CocoaTimer.prototype.start = function(milliSeconds) {
     
     console.log( cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));  
   }
-
-  cocoaTimer.timer = setInterval(recalc, INTERVAL_TIME);
+  // setInterval実行中は処理しない
+  // setIntervalは、0ではない正の整数値を戻す
+  if (cocoaTimer.timer == 0) {
+    cocoaTimer.timer = setInterval(recalc, INTERVAL_TIME);
+    console.log('cocoaTimer.timer:' + cocoaTimer.timer);
+  }
 }
 
 const cocoaTimer = new CocoaTimer();
