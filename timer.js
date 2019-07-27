@@ -182,6 +182,7 @@ window.onload = function(){
   // ストップボタン
    document.getElementById('timer-stop').addEventListener("click", function(){
     clearInterval(cocoaTimer.timer );
+    cocoaTimer.timer = 0;
   });
 
   // リセットボタン
