@@ -196,7 +196,6 @@ window.onload = function(){
   document.getElementById('button-10min').addEventListener("click", function(){
     cocoaTimer.addRemainingTime(600000);
     cocoaTimer.drawTime(cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));
-    //cocoaTimer.remainingTime = cocoaTimer.convTimeArrayToMilli(timeArray);
     console.log( cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));
   });
 
@@ -204,7 +203,6 @@ window.onload = function(){
   document.getElementById('button-1min').addEventListener("click", function(){
     cocoaTimer.addRemainingTime(60000);
     cocoaTimer.drawTime(cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));
-    //cocoaTimer.remainingTime = cocoaTimer.convTimeArrayToMilli(timeArray);
     console.log( cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));
   });
 
@@ -212,7 +210,6 @@ window.onload = function(){
   document.getElementById('button-10sec').addEventListener("click", function(){
     cocoaTimer.addRemainingTime(10000);
     cocoaTimer.drawTime(cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));
-    //cocoaTimer.remainingTime = cocoaTimer.convTimeArrayToMilli(timeArray);
     console.log( cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));
   });
 
@@ -220,9 +217,6 @@ window.onload = function(){
   document.getElementById('button-1sec').addEventListener("click", function(){
     cocoaTimer.addRemainingTime(1000);
     cocoaTimer.drawTime(cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));
-    //cocoaTimer.remainingTime = cocoaTimer.convTimeArrayToMilli(timeArray);
     console.log( cocoaTimer.remainingTimeArray(cocoaTimer.remainingTime));
   });
-
-
 }
