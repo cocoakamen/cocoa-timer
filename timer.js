@@ -3,8 +3,20 @@ function CocoaTimer() {
   this.GRAY_OUT_COLOR = '#EFEFEF';
   this.remainingTime = 0;
   this.timer = 0;
+  this.alerm = new Audio('Medium Bell Ringing Near.mp3');
+  this.isAlermPlaying = false;
 };
 
+ CocoaTimer.prototype.startAlerm = function() {
+    this.alerm.play();
+    this.isAlermPlaying = true;
+ };
+
+ CocoaTimer.prototype.stopAlerm = function() {
+  this.alerm.pause();
+  this.alerm.currentTime = 0;
+  this.isAlermPlaying = false;
+};
 CocoaTimer.prototype.drawNumber = function(upElement, downElement, num) {
   // :
   document.getElementById('separater-up').style.backgroundColor = this.numberColor;
@@ -147,6 +159,10 @@ CocoaTimer.prototype.start = function(milliSeconds) {
     console.log('cocoaTimer.remainingTime: ' + cocoaTimer.remainingTime );
 
     if( cocoaTimer.remainingTime < 0) {
+      // アラーム音
+      if( !cocoaTimer.isAlermPlaying) {
+        cocoaTimer.startAlerm();
+      }
       // 点滅
       if( cocoaTimer.remainingTime % 2000 == -1000){
         cocoaTimer.numberColor = 'crimson';
@@ -183,12 +199,14 @@ window.onload = function(){
    document.getElementById('timer-stop').addEventListener("click", function(){
     clearInterval(cocoaTimer.timer );
     cocoaTimer.timer = 0;
+    cocoaTimer.stopAlerm();
   });
 
   // リセットボタン
   document.getElementById('timer-reset').addEventListener("click", function(){
     clearInterval(cocoaTimer.timer );
     cocoaTimer.resetTime();
+    cocoaTimer.stopAlerm();
   });
 
   
